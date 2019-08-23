@@ -1,0 +1,11 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block body %}
+  <h1>{{request.user}}'s Account</h1>
+  <h3>Information</h3>
+  <p>First Name: {{request.user.first_name}}</p>
+  <p>Last Name: {{request.user.last_name}}</p>
+  <p>Email: {{request.user.email}}</p>
+  <p>Points: {{profile.points}}</p>
+  <a href="/update/">Update Profile</a>
+{% endblock %}

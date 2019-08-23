@@ -1,0 +1,11 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% block body %}
+  <h1>Progress</h1>
+  {% for record, achievement in records.items %}
+    <h3>{{record.last_achievement_time}}</h3>
+    <p>Category: {{achievement.category}}</p>
+    <p>Achievement: {{achievement.name}}</p>
+    <p>Description: {{achievement.short_description}}</p>
+    <p>Reward: {{achievement.reward}}</p>
+  {% endfor %}
+{% endblock %}

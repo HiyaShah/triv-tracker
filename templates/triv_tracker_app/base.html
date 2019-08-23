@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 900px)' href="{% static 'triv_tracker_app/media.css' %}" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'triv_tracker_app/base.css' %}">
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark transparent">
+      <a href="/" class="navbar-brand">TriV Tracker</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-target">
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a href="/logout/" class="nav-link">Logout</a>
+              </li>
+              <li class="nav-item">
+                <a href="/my-account/" class="nav-link">My Account</a>
+              </li>
+              <li class="nav-item">
+                <a href="/contact-us/" class="nav-link">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="/achievements/" class="nav-link">Achievements</a>
+              </li>
+              <li class="nav-item">
+                <a href="/progress/" class="nav-link">Progress</a>
+              </li>
+              <li class="nav-item">
+                <a href="/leaderboards/" class="nav-link">Leaderboards</a>
+              </li>
+              <li class="nav-item">
+                <a href="/enter-code/" class="nav-link">Enter Code</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a href="/login/" class="nav-link">Login/Register</a>
+              </li>
+            {% endif %}
+        </ul>
+      </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
+  <small class="copyright">Created by <a href="https://calixo888.github.io/hackspace/">HackSpace</a> &copy; 2019</small>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% block body %}
+{% if user_form.errors %}
+  {% for field in user_form %}
+      {% for error in field.errors %}
+          <div class="alert alert-danger alert-dismissible mb-0">
+            <button class="close" type="button" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            <strong>{{ error|escape }}</strong>
+          </div>
+      {% endfor %}
+  {% endfor %}
+{% endif %}
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username">
+      <input type="password" name="password" placeholder="Password">
+      <input type="submit" value="Login">
+    </form>
+    <p>Forgot your password? <a href="/password_reset/">Reset password</a></p>
+    <p>Don't have an account? <a href="/register/">Register Here</a></p>
+{% endblock %}

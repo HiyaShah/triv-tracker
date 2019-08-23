@@ -1,0 +1,30 @@
+.background-image {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  overflow: hidden;
+}
+
+.main-header {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  background-color: rgba(255,255,255,.8);
+  padding: 20px 30px;
+}
+
+.register-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 15px;
+}

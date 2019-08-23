@@ -1,0 +1,45 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'triv_tracker_app/achievements.css' %}">
+{% endblock %}
+{% block body %}
+  <title>Achievements</title>
+  {% for category, obj in categories.items %}
+  <div class="container">
+    <div class="language-group">
+      <h1 class="border-bottom border-muted d-inline-block">{{category}}</h1>
+      <div class="achievement-container">
+        <div class="achievement">
+          <h3>{{obj.name}}</h3>
+          <p>{{obj.short_description}}</p>
+          <p>Points: {{obj.reward}}</p>
+          <a href="#detail-popup{{obj.id}}" class="btn btn-primary">Details</a>
+          <a href="#enter-code{{obj.id}}" class="btn btn-primary">I Finished!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-popup" id="detail-popup{{obj.id}}">
+    <div class="popup-content">
+      <a href="#" class="x">&times;</a>
+      <h2>{{obj.name}}</h2>
+      <p>{{obj.long_description}}</p>
+    </div>
+  </div>
+  <div class="enter-code" id="enter-code{{obj.id}}">
+    <div class="popup-content">
+      <a href="#" class="x">&times;</a>
+      <h2>I Finished!</h2>
+      <p>Please ask a mentor around you to check your work and you may be rewarded with the points.</p>
+      <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <input type="password" name="code" placeholder="Enter Code">
+        <input type="hidden" name="reward" value={{obj.reward}}>
+        <input type="hidden" name="last_achievement_id" value={{obj.id}}>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock%}

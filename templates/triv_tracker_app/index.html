@@ -1,0 +1,16 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'triv_tracker_app/index.css' %}">
+{% endblock%}
+{% block body %}
+    {% if user.is_authenticated %}
+
+      <h1>Welcome {{user}}</h1>
+
+    {% else %}
+
+      <a href="/register/">Register now!</a>
+
+    {% endif %}
+{% endblock %}

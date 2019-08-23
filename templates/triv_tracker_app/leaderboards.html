@@ -1,0 +1,14 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% block body %}
+  <div class="container mt-5">
+    <a href="/leaderboards-all/" class="btn btn-primary">View All &rarr;</a>
+    <div class="list-group">
+      {% for user in users %}
+        <li class="list-group-item row">
+          <span class="col-sm">{{ user.user.username }}</span>
+          <span class="col-sm">{{ user.points }}</span>
+        </li>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
