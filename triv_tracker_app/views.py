@@ -138,7 +138,9 @@ def achievements(request):
 
     for achievement in achievements: # Appending respective achievements to certain categories
         category = achievement.category
-        categories[category] = achievement
+        achievements_category = models.Achievement.objects.filter(category=category)
+        print(list(achievements_category))
+        categories[category] = [i for i in list(achievements_category)]
 
     if request.method == "POST":
         code = request.POST.get('code')
@@ -162,6 +164,7 @@ def achievements(request):
         else:
             return HttpResponse("Invalid code")
 
+    print(categories)
     return render(request, "triv_tracker_app/achievements.html", context={"categories": categories})
 
 @login_required(login_url="/login/")

@@ -5,11 +5,12 @@
 {% endblock %}
 {% block body %}
   <title>Achievements</title>
-  {% for category, obj in categories.items %}
+  {% for category, obj_list in categories.items %}
   <div class="container">
     <div class="language-group">
       <h1 class="border-bottom border-muted d-inline-block">{{category}}</h1>
       <div class="achievement-container">
+        {% for obj in obj_list %}
         <div class="achievement">
           <h3>{{obj.name}}</h3>
           <p>{{obj.short_description}}</p>
@@ -17,9 +18,11 @@
           <a href="#detail-popup{{obj.id}}" class="btn btn-primary">Details</a>
           <a href="#enter-code{{obj.id}}" class="btn btn-primary">I Finished!</a>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>
+  {% for obj in obj_list %}
   <div class="detail-popup" id="detail-popup{{obj.id}}">
     <div class="popup-content">
       <a href="#" class="x">&times;</a>
@@ -41,5 +44,6 @@
       </form>
     </div>
   </div>
+  {% endfor %}
   {% endfor %}
 {% endblock%}
