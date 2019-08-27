@@ -127,7 +127,7 @@ STATICFILES_DIRS = [
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'calix.huang1@gmail.com'
-EMAIL_HOST_PASSWORD = 'Xamg9]HuskRufa2'
+EMAIL_HOST_USER = 'email'
+EMAIL_HOST_PASSWORD = 'password'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'TriV Tracker Team <trivalleycoderdojo@gmail.com>'
